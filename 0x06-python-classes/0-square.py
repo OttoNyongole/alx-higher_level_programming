@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-calss square:
+"""Square class"""
+calss Square:
     pass
-p = square()
+p = Square()
 print(p)
