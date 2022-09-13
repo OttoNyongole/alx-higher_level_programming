@@ -2,5 +2,3 @@
 """Square class"""
 calss Square:
     pass
-p = Square()
-print(p)
