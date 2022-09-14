@@ -1,23 +1,19 @@
 #!/usr/bin/python3
-"""my_list is the first list and my_list_2 the second list
-   innorder to divide each element we ned new_list and
-   append the results to it"""
 def list_division(my_list_1, my_list_2, list_length):
     new_list = []
-    for i in range(0, list_length):
-
+    result = 0
+    for i in range(list_length):
         try:
-            div = my_list_1[i] / my_list_2[i]
-
-        except TypeError:
-            print("wrong type")
-            div = 0
-        except ZeroDivisionError:
-            print("division by 0")
-            div = 0
+            result = my_list_1[i] / my_list_2[i]
         except IndexError:
+            result = 0
             print("out of range")
-            div = 0
+        except ZeroDivisionError:
+            result = 0
+            print("division by 0")
+        except (ValueError, TypeError):
+            result = 0
+            print("wrong type")
         finally:
-            new_list.append(div)
+            new_list.append(result)
     return (new_list)
