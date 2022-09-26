@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""function that returns attributes and methods of an object"""
+"""function that returns attributes and
+   methods of an object
+"""
 
 
 
