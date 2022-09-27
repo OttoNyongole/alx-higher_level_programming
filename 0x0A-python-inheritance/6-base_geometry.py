@@ -3,8 +3,8 @@
 
 
 class BaseGeomentry:
-    """Rep base geometry."""
+    """empt class"""
 
     def area(self):
-        """NULL statements"""
+        """raise error"""
         raise Exception("area() is niot implemented")
