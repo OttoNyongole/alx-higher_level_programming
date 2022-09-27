@@ -5,10 +5,10 @@ class MyList inherits class list
 
 
 class MyList(list):
-    """class MyList inherits the parent list"""
-    def __init__(self):
-        super().__init__()
+    """child class of class list"""
+
     def print_sorted(self):
+        """prints sorted list"""
         print(sorted(self))
 
 
