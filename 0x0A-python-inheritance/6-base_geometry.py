@@ -1,10 +1,9 @@
 #!/usr/bin/python3
-"""class BaseGeometry"""
+"""Geomtrt module"""
 
 
-class BaseGeomentry:
-    """empt class"""
-
+class BaseGeometry:
+    """empty geomtry module"""
     def area(self):
-        """raise error"""
-        raise Exception("area() is niot implemented")
+        """raises error"""
+        raise Exception("area() is not implemented")
