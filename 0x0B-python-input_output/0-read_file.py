@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-"""define a function that reads a text file (UTF8) prints it to stdout"""
+"""
+Module for function that reads a text file in utf8 enconding
+"""
+
 
 def read_file(filename=""):
-    """
-    reads and prints text file in UTF8 encoding.
-    We have to use with statement
-    """
-    with open(filename, encoding='utf-8') as file:
-        print(file.read(), end="")
-    file.close()
+    """ function that reads UTF8 file and prints to stdout """
+    with open(filename, encoding='utf-8') as a_file:
+        for line in a_file:
+            print(line, end="")
