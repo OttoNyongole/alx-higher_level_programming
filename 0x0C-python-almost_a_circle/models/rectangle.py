@@ -10,6 +10,18 @@ class Rectangle(Base):
             """Returns the area of the rectangle"""
             return self.width * self.height
 
+    def display(self):
+        """Display character # in stdout"""
+        if self.width == 0 or self.height == 0:
+            print("")
+            return
+
+        [print("") for y in range(self.y)]
+        for i in range(self.height):
+            [print("", end="") for x in range(self.x)]
+            [print('#', end="") for j in range(self.width)]
+            print()
+
 
     def __init__(self, width, height, x=0, y=0, id=None):
         """Construct a class Rectangle"""
