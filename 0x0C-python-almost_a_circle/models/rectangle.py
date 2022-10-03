@@ -12,15 +12,14 @@ class Rectangle(Base):
 
     def display(self):
         """Display character # in stdout"""
-        if self.width == 0 or self.height == 0:
-            print("")
-            return
+        _display = ''
 
-        [print("") for y in range(self.y)]
+        _display += "\n" * self.y
         for i in range(self.height):
-            [print("", end="") for x in range(self.x)]
-            [print('#', end="") for j in range(self.width)]
-            print()
+            _display += (" " * self.x) + (self.width * "#")
+            if i != self.height - 1:
+                _display += '\n'
+        print(_display)
 
     def update(self, *args, **kwargs):
         """
@@ -56,6 +55,19 @@ class Rectangle(Base):
                     self.x = value
                 if key == 'y':
                     self.y = value
+    def to_dictionary(self):
+        """to_dictionary method
+        Return:
+            return the dictionary representation of a Rectangle.
+            this dictionary must contain:
+             - id
+             - width
+             - height
+             - x
+             - y
+        """
+        attrs_list = ["id", "width", "height", "x", "y"]
+        return {key: getattr(self, key) for key in attrs_list}
 
 
     def __init__(self, width, height, x=0, y=0, id=None):
