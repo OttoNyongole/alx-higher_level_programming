@@ -22,21 +22,40 @@ class Rectangle(Base):
             [print('#', end="") for j in range(self.width)]
             print()
 
-    def update(self, *args):
-            if args and len(args):
-                for idx, arg in enumerate(args):
-                    if idx == 0:
-                        super().__init__(arg)
-                    if idx == 1:
-                        self.id = arg
-                    if idx == 2:
-                        self.width = arg
-                    if idx == 3:
-                        self.height = arg
-                    if idx == 4:
-                        self.x = arg
-                    if idx == 5:
-                        self.y = arg
+    def update(self, *args, **kwargs):
+        """
+        update method
+        Args:
+            *args:
+                pointer to an array of data
+        """
+        if args and len(args):
+            for idx, arg in enumerate(args):
+                if idx == 0:
+                    super().__init__(arg)
+                if idx == 1:
+                    self.id = arg
+                if idx == 2:
+                    self.width = arg
+                if idx == 3:
+                    self.height = arg
+                if idx == 4:
+                    self.x = arg
+                if idx == 5:
+                    self.y = arg
+
+        elif kwargs and len(kwargs) > 0:
+            for key, value in kwargs.items():
+                if key == 'id':
+                    super().__init__(value)
+                if key == 'width':
+                    self.width = value
+                if key == 'height':
+                    self.height = value
+                if key == 'x':
+                    self.x = value
+                if key == 'y':
+                    self.y = value
 
 
     def __init__(self, width, height, x=0, y=0, id=None):
