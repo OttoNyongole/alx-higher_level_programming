@@ -96,3 +96,7 @@ class Rectangle(Base):
                 raise ValueError("y must be >= 0")
 
             self.__y = value
+
+        def __str__(self):
+            """Override str method from Base"""
+            return '[Rectangle] ({}) {}/{} - {}/{}'.format(self.id, self.x, self.y, self.width, self.height)
