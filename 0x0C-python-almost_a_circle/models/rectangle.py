@@ -22,6 +22,22 @@ class Rectangle(Base):
             [print('#', end="") for j in range(self.width)]
             print()
 
+    def update(self, *args):
+            if args and len(args):
+                for idx, arg in enumerate(args):
+                    if idx == 0:
+                        super().__init__(arg)
+                    if idx == 1:
+                        self.id = arg
+                    if idx == 2:
+                        self.width = arg
+                    if idx == 3:
+                        self.height = arg
+                    if idx == 4:
+                        self.x = arg
+                    if idx == 5:
+                        self.y = arg
+
 
     def __init__(self, width, height, x=0, y=0, id=None):
         """Construct a class Rectangle"""
