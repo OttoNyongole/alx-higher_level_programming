@@ -104,7 +104,11 @@ class Rectangle(Base):
         Args:
             @value: rectangle width value
         """
-        self.integer_validator("width", value)
+        if type(value) != int:
+            raise TypeError("width must be an integer")
+        if value <= 0:
+            raise ValueError("width must be > 0")
+
         self.__width = value
 
     @property
@@ -120,7 +124,11 @@ class Rectangle(Base):
         Args:
             @value: rectangle height value
         """
-        self.integer_validator("height", value)
+        if type(value) != int:
+            raise TypeError("height must be integer")
+        if value <= 0:
+            raise ValueError("height must be > 0")
+
         self.__height = value
 
     @property
@@ -136,7 +144,11 @@ class Rectangle(Base):
         Args:
             @value: x position value
         """
-        self.integer_validator("x", value)
+        if type(value) != int:
+            raise TypeError("x must be an integer")
+        if value < 0:
+            raise ValueError("x must be >= 0")
+
         self.__x = value
 
     @property
@@ -146,13 +158,11 @@ class Rectangle(Base):
 
     @y.setter
     def y(self, value):
-        """setter y
-        Attributes:
-            @__y: y position
-        Args:
-            @value: y position value
-        """
-        self.integer_validator("y", value)
+        """sets the value to y"""
+        if type(value) != int:
+            raise TypeError("y must be an integer")
+        if value < 0:
+            raise ValueError("y must be >= 0")
         self.__y = value
 
     def __str__(self):
