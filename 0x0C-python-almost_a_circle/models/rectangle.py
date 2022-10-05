@@ -1,9 +1,6 @@
 #!/usr/bin/python3
 """Module for class Rectangle"""
 from models.base import Base
-
-
-
 class Rectangle(Base):
     """class Rectangle that inherits from Base"""
     def area(self):
@@ -13,12 +10,14 @@ class Rectangle(Base):
     def display(self):
         """Display character # in stdout"""
         _display = ''
+
         _display += "\n" * self.y
         for i in range(self.height):
             _display += (" " * self.x) + (self.width * "#")
             if i != self.height - 1:
                 _display += '\n'
         print(_display)
+
     def update(self, *args, **kwargs):
         """
         update method
@@ -69,7 +68,6 @@ class Rectangle(Base):
 
     def __init__(self, width, height, x=0, y=0, id=None):
         """Construct a class Rectangle"""
-
         super().__init__(id)
         self.width = width
         self.height = height
@@ -109,13 +107,9 @@ class Rectangle(Base):
             
             if type(value) != int:
                 raise TypeError("x must be an integer")
-
             if value < 0:
                 raise ValueError("x must be >= 0")
-
             self.__x = value
-
-
         @property
         def y(self):
             """get the value of y"""
@@ -128,7 +122,6 @@ class Rectangle(Base):
             if value < 0:
                 raise ValueError("y must be >= 0")
             self.__y = value
-
         def __str__(self):
             """Override str method from Base"""
-            return '[Rectangle] ({}) {}/{} - {}/{}'.format(self.id, self.x, self.y, self.width, self.height)
+return '[Rectangle] ({}) {}/{} - {}/{}'.format(self.id, self.x, self.y, self.width, self.height)
