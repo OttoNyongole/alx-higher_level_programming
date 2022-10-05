@@ -3,12 +3,11 @@
 from models.base import Base
 
 
-
 class Rectangle(Base):
     """class Rectangle that inherits from Base"""
     def area(self):
             """Returns the area of the rectangle"""
-            return self.width * self.height
+        return self.width * self.height
 
     def display(self):
         """Display character # in stdout"""
@@ -55,6 +54,7 @@ class Rectangle(Base):
                     self.x = value
                 if key == 'y':
                     self.y = value
+    
     def to_dictionary(self):
         """to_dictionary method
         Return:
@@ -68,7 +68,6 @@ class Rectangle(Base):
         """
         attrs_list = ["id", "width", "height", "x", "y"]
         return {key: getattr(self, key) for key in attrs_list}
-
 
     def __init__(self, width, height, x=0, y=0, id=None):
         """Construct a class Rectangle"""
@@ -118,7 +117,7 @@ class Rectangle(Base):
         @x.setter
         def x(self, value):
             """sets the value to x """
-            
+
             if type(value) != int:
                 raise TypeError("x must be an integer")
 
@@ -126,7 +125,6 @@ class Rectangle(Base):
                 raise ValueError("x must be >= 0")
 
             self.__x = value
-
 
         @property
         def y(self):
@@ -146,4 +144,5 @@ class Rectangle(Base):
 
         def __str__(self):
             """Override str method from Base"""
-            return '[Rectangle] ({}) {}/{} - {}/{}'.format(self.id, self.x, self.y, self.width, self.height)
+            return '[Rectangle] ({}) {}/{} - {}/{}'.format(self.id, self.x, self.y, 
+                    self.width, self.height)
