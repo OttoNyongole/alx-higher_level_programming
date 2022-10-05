@@ -1,74 +1,68 @@
 #!/usr/bin/python3
-"""Module Square"""
+"""
+This module contains the Class Square.
+"""
 from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
-    """Class Square that inherits from rectangle"""
+    """
+    Class Square inherits Rectangle.
+    """
+    def update(self, *args, **kwargs):
+        """update method
+        Args:
+            @args: is the list of arguments - no-keyworded arguments
+            @kwargs: double pointer to a dictionary: key/value
+        """
+        if args and len(args) > 0:
+            for idx, arg in enumerate(args):
+                if idx == 0:
+                    super(Rectangle, self).__init__(arg)
+                if idx == 1:
+                    self.size = arg
+                if idx == 2:
+                    self.x = arg
+                if idx == 3:
+                    self.y = arg
+        elif kwargs and len(kwargs) > 0:
+            for key, value in kwargs.items():
+                if key == 'id':
+                    super(Rectangle, self).__init__(value)
+                if key == 'size':
+                    self.size = value
+                if key == 'x':
+                    self.x = value
+                if key == 'y':
+                    self.y = value
+
+    def to_dictionary(self):
+        """to_dictionary method
+        Return:
+            returns the dictionary representation os a square
+        """
+        attrs_list = ["id", "size", "x", "y"]
+        return {key: getattr(self, key) for key in attrs_list}
 
     def __init__(self, size, x=0, y=0, id=None):
-        super().__init__(size, size, id, x, y)
+        """init methods: use super for init square
+        """
+        super().__init__(size, size, x, y, id)
 
-     @property
+    @property
     def size(self):
-        """Get/set the size of the Square."""
+        """getter size"""
         return self.width
 
     @size.setter
     def size(self, value):
+        """setter size"""
         self.width = value
         self.height = value
 
-    def update(self, *args, **kwargs):
-        """Update the Square.
-        Args:
-            *args (ints): New attribute values.
-                - 1st argument represents id attribute
-                - 2nd argument represents size attribute
-                - 3rd argument represents x attribute
-                - 4th argument represents y attribute
-            **kwargs (dict): New key/value pairs of attributes.
-        """
-        if args and len(args) != 0:
-            a = 0
-            for arg in args:
-                if a == 0:
-                    if arg is None:
-                        self.__init__(self.size, self.x, self.y)
-                    else:
-                        self.id = arg
-                elif a == 1:
-                    self.size = arg
-                elif a == 2:
-                    self.x = arg
-                elif a == 3:
-                    self.y = arg
-                a += 1
-
-        elif kwargs and len(kwargs) != 0:
-            for k, v in kwargs.items():
-                if k == "id":
-                    if v is None:
-                        self.__init__(self.size, self.x, self.y)
-                    else:
-                        self.id = v
-                elif k == "size":
-                    self.size = v
-                elif k == "x":
-                    self.x = v
-                elif k == "y":
-                    self.y = v
-
-    def to_dictionary(self):
-        """Return the dictionary representation of the Square."""
-        return {
-            "id": self.id,
-            "size": self.width,
-            "x": self.x,
-            "y": self.y
-        }
-
     def __str__(self):
-        """overloading method """
-        prnt = "[Square] ({}) {}/{} - {}"
-        return prnt.format(self.id, self.x, self.y, self.width)
+        """magic method __str__
+        Return [Square] (<id>) <x>/<y> - <size>
+        """
+        _print = "[Square] ({}) {}/{} - {}"
+        return _print.format(self.id, self.x, self.y, self.width)
