@@ -1,21 +1,25 @@
 #!/usr/bin/python3
-# Add the State object "Louisiana" to db 'hbtn_0e_6_usa'
-# Print the new 'states.id' after creation
-# Script should take 3 args: username, pw, and db name
-# Must use SQLAlchemy
+"""Inserts into State obj from db"""
 import sys
-from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
+from sqlalchemy.orm import Session
 from model_state import Base, State
 
-if __name__ == "__main__":
-    engine = create_engine("mysql+mysqldb://{}:{}@localhost:3306/{}"
-                           .format(sys.argv[1], sys.argv[2], sys.argv[3]))
-    Session = sessionmaker(bind=engine)
-    session = Session()
 
-    l = State(name='Louisiana')
-    session.add(l)
+def insert_to_state_obj():
+    engine = create_engine("mysql+mysqldb://{}:{}@localhost/{}"
+                           .format(sys.argv[1], sys.argv[2], sys.argv[3]),
+                           pool_pre_ping=True)
+    Base.metadata.create_all(engine)
+
+    session = Session(engine)
+    state = State(name='Louisiana')
+
+    session.add(state)
     session.commit()
+    print(state.id)
 
-    print(l.id)
+    session.close()
+
+if __name__ == "__main__":
+    insert_to_state_obj()
