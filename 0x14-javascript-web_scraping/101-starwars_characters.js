@@ -1,4 +1,3 @@
-ble file 20 lines (19 sloc) 567 Bytes
 #!/usr/bin/node
 const request = require('request');
 const url = 'https://swapi-api.hbtn.io/api/films/' + process.argv[2];
